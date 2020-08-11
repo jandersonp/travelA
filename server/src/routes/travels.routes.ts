@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
+import { parseISO } from 'date-fns';
 
-import Travel from '../models/Travel';
+import TravelsRepository from '../repositories/TravelsRepository';
+import CreateTravelService from '../services/CreateTravelService';
 
 const travelsRouter = Router();
-
-const travels: Travel[] = [];
+const travelsRepository = new TravelsRepository();
 
 travelsRouter.post('/', (request, response) => {
   const {
@@ -18,18 +18,20 @@ travelsRouter.post('/', (request, response) => {
     travelersnumber,
   } = request.body;
 
-  const travel = {
-    id: uuid(),
+  const dateF = parseISO(datefrom);
+  const dateT = parseISO(dateto);
+
+  const createTravel = new CreateTravelService(travelsRepository);
+
+  const travel = createTravel.execute({
     name,
     phone,
     origin,
     destination,
-    datefrom,
-    dateto,
+    datefrom: dateF,
+    dateto: dateT,
     travelersnumber,
-  };
-
-  travels.push(travel);
+  });
 
   return response.json(travel);
 });

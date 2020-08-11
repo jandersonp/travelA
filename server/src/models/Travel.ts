@@ -17,15 +17,15 @@ class Travel {
 
   travelersnumber: number;
 
-  constructor(
-    name: string,
-    phone: string,
-    origin: string,
-    destination: string,
-    datefrom: Date,
-    dateto: Date,
-    travelersnumber: number,
-  ) {
+  constructor({
+    name,
+    phone,
+    origin,
+    destination,
+    datefrom,
+    dateto,
+    travelersnumber,
+  }: Omit<Travel, 'id'>) {
     this.id = uuid();
     this.name = name;
     this.phone = phone;

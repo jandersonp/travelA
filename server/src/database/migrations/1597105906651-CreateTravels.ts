@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateTravels1597084659478 implements MigrationInterface {
+export class CreateTravels1597105906651 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -16,37 +16,30 @@ export class CreateTravels1597084659478 implements MigrationInterface {
           {
             name: 'name',
             type: 'varchar',
-            isNullable: false,
           },
           {
             name: 'phone',
             type: 'varchar',
-            isNullable: false,
           },
           {
             name: 'origin',
             type: 'varchar',
-            isNullable: false,
           },
           {
             name: 'destination',
             type: 'varchar',
-            isNullable: false,
           },
           {
             name: 'datefrom',
             type: 'timestamp with time zone',
-            isNullable: false,
           },
           {
             name: 'dateto',
             type: 'timestamp with time zone',
-            isNullable: false,
           },
           {
             name: 'travelersnumber',
-            type: 'number',
-            isNullable: false,
+            type: 'varchar',
           },
         ],
       }),

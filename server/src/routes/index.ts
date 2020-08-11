@@ -4,6 +4,6 @@ import travelsRouter from './travels.routes';
 
 const routes = Router();
 
-routes.use('/sucess', travelsRouter);
+routes.use('/travels', travelsRouter);
 
 export default routes;
